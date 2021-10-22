@@ -3,8 +3,12 @@ const mongoose = require("mongoose")
 const app = express();
 const toDoRoutes = require("./routes/toDoRoutes");
 const PORT = 3030;
+const uri = "mongodb://localhost/todoList";
+const connectionOptions = { useUnifiedTopology: true, useNewUrlParser: true };
 
-mongoose.connect("mongodb://localhost/todoList")
+app.use(express.json());
+
+mongoose.connect(uri, connectionOptions)
     .then(() => {
         console.log("Connection to Database established!");
     })
