@@ -6,16 +6,21 @@ import Section from './components/Section';
 const apptTitle = "To-Do App";
 
 const list = [
-    { title: "Test #1", completed: false},
-    { title: "Test #2", completed: false},
-    { title: "Test #3", completed: false}
+    { id: 1, title: "Test #1", completed: false},
+    { id: 2, title: "Test #2", completed: false},
+    { id: 3, title: "Test #3", completed: false}
 ];
 
 const App = () => {
     const [toDoList, setToDoList] = useState(list);
     const addToDo = (item) => {
+        console.log(toDoList);
         setToDoList((oldList) => [...oldList, item]);
-    }
+    };
+    const removeToDo = (id) => {
+        setToDoList((oldList) => oldList.filter((item) => item.id !== id));
+    };
+
     return <div className="ui container center aligned">
         <Section>
             <h1>{apptTitle}</h1>
@@ -24,7 +29,7 @@ const App = () => {
             <Form addToDo={addToDo}/>
         </Section>
         <Section>
-            <List list={toDoList} />
+            <List removeToDoListProp={removeToDo} list={toDoList} />
         </Section>
     </div>
 };
