@@ -26,11 +26,11 @@ const ToDo = ({ title, completed }) => {
     }
 
     const handleSubmit = () => {
-        setCompletedState(true);
+        setCompletedState((oldCompleted) => !oldCompleted);
     }
 
     return (
-        <div className="row" onDoubleClick={handleDivDoubleClick}>
+        <div className="row">
             {
               isEditing ?
                  <div className="column seven wide">
@@ -44,13 +44,13 @@ const ToDo = ({ title, completed }) => {
                  </div>
                       :
                       <>
-                  <div className="column five wide">
+                  <div className="column five wide" onDoubleClick={handleDivDoubleClick}>
                       <h2 className={"ui header" + ( completedState ? " green" : "")}>{value}</h2>
                   </div>
                   <div className="column one wide">
                       <button
                           onClick={handleSubmit}
-                          className="ui button circular icon green">
+                          className={"ui button circular icon"  + ( completedState ? " blue" : " green")}>
                           <i className="white check icon"></i>
                       </button>
                   </div>
