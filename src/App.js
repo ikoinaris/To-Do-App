@@ -3,7 +3,7 @@ import Form from "./components/Form"
 import List from './components/List';
 import Section from './components/Section';
 
-const apptTitle = "To-Do App";
+const appTitle = "To-Do App";
 
 const list = [
     { id: 1, title: "Test #1", completed: false},
@@ -23,7 +23,7 @@ const App = () => {
 
     return <div className="ui container center aligned">
         <Section>
-            <h1>{apptTitle}</h1>
+            <h1>{appTitle}</h1>
         </Section>
         <Section>
             <Form addToDo={addToDo}/>
