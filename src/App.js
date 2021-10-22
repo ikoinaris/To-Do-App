@@ -6,8 +6,6 @@ import List from './components/List';
 import Section from './components/Section';
 
 const appTitle = "My To-Dos";
-const dbUrl = "http://localhost:3030/todos/";
-
 
 const App = () => {
     const [toDoList, setToDoList] = useState([]);
@@ -23,8 +21,9 @@ const App = () => {
         const { data } = await todos.post("/todos", item);
         setToDoList((oldList) => [...oldList, data]);
     };
-    const removeToDo = (id) => {
-        setToDoList((oldList) => oldList.filter((item) => item.id !== id));
+    const removeToDo = async (id) => {
+        await todos.delete(`/todos/${id}`);
+        setToDoList((oldList) => oldList.filter((item) => item._id !== id));
     };
 
     return <div className="ui container center aligned">

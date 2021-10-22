@@ -6,7 +6,7 @@ const List = ( {list, removeToDoListProp} ) => {
         <ToDo
             title={item.title}
             completed={item.completed}
-            removeToDoItemProp={(e) => removeToDoListProp(item.id)} key={item.title}
+            removeToDoItemProp={(e) => removeToDoListProp(item._id)} key={item.title}
         />);
     return (
         <div className="ui grid center aligned">
