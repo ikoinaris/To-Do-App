@@ -3,7 +3,7 @@ import Form from "./components/Form"
 import List from './components/List';
 import Section from './components/Section';
 
-const appTitle = "To-Do App";
+const appTitle = "My To-Dos";
 
 const list = [
     { id: 1, title: "Test #1", completed: false},
