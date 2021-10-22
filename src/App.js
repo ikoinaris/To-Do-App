@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import todos from './api';
 
 import Form from "./components/Form"
 import List from './components/List';
@@ -8,25 +8,20 @@ import Section from './components/Section';
 const appTitle = "My To-Dos";
 const dbUrl = "http://localhost:3030/todos/";
 
-const list = [
-    { id: 1, title: "Test #1", completed: false},
-    { id: 2, title: "Test #2", completed: false},
-    { id: 3, title: "Test #3", completed: false}
-];
 
 const App = () => {
-    const [toDoList, setToDoList] = useState(list);
+    const [toDoList, setToDoList] = useState([]);
 
     useEffect(() => {
         (async function () {
-            const response = await axios.get(dbUrl);
-            console.log(response);
+            const { data } = await todos.get("/todos");
+            setToDoList(data);
         })();
     }, []);
 
-    const addToDo = (item) => {
-        console.log(toDoList);
-        setToDoList((oldList) => [...oldList, item]);
+    const addToDo = async (item) => {
+        const { data } = await todos.post("/todos", item);
+        setToDoList((oldList) => [...oldList, data]);
     };
     const removeToDo = (id) => {
         setToDoList((oldList) => oldList.filter((item) => item.id !== id));
