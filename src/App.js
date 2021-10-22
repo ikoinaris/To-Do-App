@@ -26,6 +26,10 @@ const App = () => {
         setToDoList((oldList) => oldList.filter((item) => item._id !== id));
     };
 
+    const editToDo = async (id, item) => {
+        const { data } = await todos.put(`/todos/${id}`, item);
+    }
+
     return <div className="ui container center aligned">
         <Section>
             <h1>{appTitle}</h1>
@@ -34,7 +38,10 @@ const App = () => {
             <Form addToDo={addToDo}/>
         </Section>
         <Section>
-            <List removeToDoListProp={removeToDo} list={toDoList} />
+            <List
+                editToDoListProp={editToDo}
+                removeToDoListProp={removeToDo}
+                list={toDoList} />
         </Section>
     </div>
 };
