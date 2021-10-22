@@ -14,7 +14,7 @@ mongoose.connect(uri, connectionOptions)
     })
     .catch((err) => console.error(err));
 
-app.use("/todo", toDoRoutes);
+app.use("/todos", toDoRoutes);
 
 app.listen(PORT, () => {
     console.log("Server is listening on port " + PORT);
