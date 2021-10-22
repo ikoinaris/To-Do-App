@@ -1,5 +1,6 @@
 const express = require("express");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
 const toDoRoutes = require("./routes/toDoRoutes");
 const PORT = 3030;
@@ -7,6 +8,7 @@ const uri = "mongodb://localhost/todoList";
 const connectionOptions = { useUnifiedTopology: true, useNewUrlParser: true };
 
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect(uri, connectionOptions)
     .then(() => {
