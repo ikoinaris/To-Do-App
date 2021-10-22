@@ -27,7 +27,11 @@ const ToDo = ({ title, completed, removeToDoItemProp, editToDoItemProp }) => {
     }
 
     const handleSubmit = () => {
-        setCompletedState((oldCompleted) => !oldCompleted);
+        setCompletedState((oldCompleted) => {
+            const newState = !oldCompleted
+            editToDoItemProp({ completed: newState });
+            return newState;
+        });
     }
 
     return (
