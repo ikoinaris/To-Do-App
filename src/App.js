@@ -10,14 +10,18 @@ const list = [
     { title: "Test #2", completed: false},
     { title: "Test #3", completed: false}
 ];
+
 const App = () => {
-    const [toDoList, SetToDoList] = useState(list);
+    const [toDoList, setToDoList] = useState(list);
+    const addToDo = (item) => {
+        setToDoList((oldList) => [...oldList, item]);
+    }
     return <div className="ui container center aligned">
         <Section>
             <h1>{apptTitle}</h1>
         </Section>
         <Section>
-            <Form />
+            <Form addToDo={addToDo}/>
         </Section>
         <Section>
             <List list={toDoList} />
